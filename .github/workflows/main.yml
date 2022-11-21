@@ -39,10 +39,6 @@ jobs:
         ref: develop
         working-directory: ${{ github.workspace }}
         
-    - name: Current Working Directory
-      run: tree
-      shell: sh  
-      
     - name: Validation Results
       run: python ${{ env.SCRIPT_DIR }}/ProdValidationUtil/main.py
       shell: sh
