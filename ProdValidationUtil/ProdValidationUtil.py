@@ -129,13 +129,11 @@ def createFilePath(serviceList):
             service.setFilePath(filePath)
         elif service.environmentType == Constants.ValidationEnvConstants.PROD or service.environmentType == Constants.ValidationEnvConstants.PRODAP:
             filePath = Path(
-                "/master/" + service.serviceName + "/" + service.serviceName + "-" + service.environmentType.value + ".properties")
+                "./master/" + service.serviceName + "/" + service.serviceName + "-" + service.environmentType.value + ".properties")
             service.setFilePath(filePath)
         else:
             filePath = Path(
                 "./develop/" + service.serviceName + "/" + service.serviceName + "-" + service.environmentType.value + ".properties")
-            bashScript = "ls"
-            os.system(bashScript)
             service.setFilePath(filePath)
 
 
