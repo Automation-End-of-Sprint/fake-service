@@ -113,7 +113,7 @@ def populatePropDictionary(serviceGroup):
 
 def createFilePath(serviceList):
     for service in serviceList:
-        bashCommand = "tree"
+        bashCommand = "cd develop"
         bashCommand2 = "ls"
         os.system(bashCommand)
         os.system(bashCommand2)
@@ -121,13 +121,13 @@ def createFilePath(serviceList):
             pass  # TODO Might want to reorganize this but for now it works
         elif service.environmentType == Constants.ValidationEnvConstants.TRAIN:
             filePath = Path(
-                "../develop/" + service.serviceName + "/" + service.serviceName + "-" + service.environmentType.value + ".properties")
+                "develop/" + service.serviceName + "/" + service.serviceName + "-" + service.environmentType.value + ".properties")
             service.setFilePath(filePath)
         elif service.environmentType == Constants.ValidationEnvConstants.DEVELOPBaseProperties:
-            filePath = Path("../develop/" + service.serviceName + "/" + service.serviceName + ".properties")
+            filePath = Path("develop/" + service.serviceName + "/" + service.serviceName + ".properties")
             service.setFilePath(filePath)
         elif service.environmentType == Constants.ValidationEnvConstants.MASTERBaseProperties:
-            filePath = Path("../master/" + service.serviceName + "/" + service.serviceName + ".properties")
+            filePath = Path("master/" + service.serviceName + "/" + service.serviceName + ".properties")
             service.setFilePath(filePath)
         elif service.environmentType == Constants.ValidationEnvConstants.PROD or service.environmentType == Constants.ValidationEnvConstants.PRODAP:
             filePath = Path(
