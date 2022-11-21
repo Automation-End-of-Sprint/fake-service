@@ -113,7 +113,8 @@ def populatePropDictionary(serviceGroup):
 
 def createFilePath(serviceList):
     for service in serviceList:
-
+        bashScript = "ls develop/"
+        os.system(bashScript)
         if service.environmentType == Constants.EnvironmentType.NA:
             pass  # TODO Might want to reorganize this but for now it works
         elif service.environmentType == Constants.ValidationEnvConstants.TRAIN:
