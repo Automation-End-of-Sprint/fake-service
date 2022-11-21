@@ -71,9 +71,8 @@ def validateServiceGroup(serviceGroup):
     baselineEnvVSTRN = set(baselineEnvService.propertiesDict) - set(trnEnvService.propertiesDict)
     if baselineEnvVSTRN:
         for errorTRN in baselineEnvVSTRN:
-            serviceGroup.putErrorInList(PropertyError(errorTRN, service.serviceName + "Missing the following property "
-                                                                                      "that exist within UAT1 but not "
-                                                                                      "in TRN"))
+            serviceGroup.putErrorInList(PropertyError("Service: " + service.serviceName + ": ", "Missing " + errorTRN +
+                                                                                    " from TRN but exist within UAT1"))
 
     # PART 3: Validate master.properties VS develop.properties
     # 1) Find values missing within Master ==> Output list
@@ -91,8 +90,9 @@ def validateServiceGroup(serviceGroup):
     if missingInMasterAndProdAP:
         for errorMasterAP in missingInMasterAndProdAP:
             serviceGroup.putErrorInList(
-                PropertyError(errorMasterAP, service.serviceName + "Missing the following property that exist within "
-                                                                   "Master"))
+                PropertyError("Service: " + service.serviceName + ":", "Missing" + errorMasterAP + "the following "
+                                                                                                   "property that "
+                                                                                 "exist within Master"))
 
 
 # Dictionary population in the format
