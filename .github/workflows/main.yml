@@ -2,6 +2,13 @@ name: Property Validation PROD
 
 on: 
   workflow_dispatch:
+  label:
+    types: 
+      - created
+    branches:
+      - validation-scripts
+  
+
 env:
   SCRIPT_DIR: scripts
   MASTER_DIR: master
