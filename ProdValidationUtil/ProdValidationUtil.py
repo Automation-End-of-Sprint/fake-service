@@ -57,22 +57,23 @@ def validateServiceGroup(serviceGroup):
     if step1ResultsVSProp:
         for errorProd in step1ResultsVSProp:
             serviceGroup.putErrorInList(
-                PropertyError(errorProd, "Missing the following property that exist within UAT1 "
+                PropertyError(errorProd, service.serviceName + "Missing the following property that exist within UAT1 "
                                          "but not prod "))
 
     if step2ResultsVSProp:
         for errorProdAP in step2ResultsVSProp:
             serviceGroup.putErrorInList(
-                PropertyError(errorProdAP, "Missing the following property that exist within UAT1 "
-                                           "but not prod-ap "))
+                PropertyError(errorProdAP, service.serviceName + "Missing the following property that exist within "
+                                                                 "UAT1 but not prod-ap "))
 
     # PART 2: Validate TRN is updated with UAT1
     # 1) Exists within UAT1 and TRN ==> Output list
     baselineEnvVSTRN = set(baselineEnvService.propertiesDict) - set(trnEnvService.propertiesDict)
     if baselineEnvVSTRN:
         for errorTRN in baselineEnvVSTRN:
-            serviceGroup.putErrorInList(PropertyError(errorTRN, "Missing the following property that exist within UAT1 "
-                                                                "but not TRN"))
+            serviceGroup.putErrorInList(PropertyError(errorTRN, service.serviceName + "Missing the following property "
+                                                                                      "that exist within UAT1 but not "
+                                                                                      "in TRN"))
 
     # PART 3: Validate master.properties VS develop.properties
     # 1) Find values missing within Master ==> Output list
@@ -85,11 +86,13 @@ def validateServiceGroup(serviceGroup):
     if missingInMasterAndProd:
         for errorMasterProd in missingInMasterAndProd:
             serviceGroup.putErrorInList(
-                PropertyError(errorMasterProd, "Missing the following property that exist within Develop"))
+                PropertyError(errorMasterProd, service.serviceName + "Missing the following property that exist "
+                                                                     "within Develop"))
     if missingInMasterAndProdAP:
         for errorMasterAP in missingInMasterAndProdAP:
             serviceGroup.putErrorInList(
-                PropertyError(errorMasterAP, "Missing the following property that exist within Master"))
+                PropertyError(errorMasterAP, service.serviceName + "Missing the following property that exist within "
+                                                                   "Master"))
 
 
 # Dictionary population in the format
