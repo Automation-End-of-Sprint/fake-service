@@ -40,6 +40,6 @@ jobs:
       shell: sh
       
     - name: Output Current Working Directory Tree
-      run: python ${{ env.SCRIPT_DIR }}/main.py
+      run: python ${{ env.SCRIPT_DIR }}/ProdValidationUtil/main.py
       shell: sh
      
