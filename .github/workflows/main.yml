@@ -1,4 +1,4 @@
-name: On Push Run
+name: Property Validation PROD
 
 on: 
   workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
     - name: Check-out devops repository
       uses: actions/checkout@v2
       with:
-        repository: patrickfoconnor/scripting-blue-cross
+        repository: Automation-End-of-Sprint/Prod-Property-Validation-Script
         token: ${{ secrets.GITHUB_TOKEN }}
         path: ${{ env.SCRIPT_DIR }}
     - name: Check-out mgmt-master repository
