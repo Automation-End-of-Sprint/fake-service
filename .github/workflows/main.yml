@@ -46,4 +46,8 @@ jobs:
     - name: Validation Results
       run: python ${{ env.SCRIPT_DIR }}/ProdValidationUtil/main.py
       shell: sh
+      
+    - name: Working Directory Output
+      run: tree
+      shell: sh
      
