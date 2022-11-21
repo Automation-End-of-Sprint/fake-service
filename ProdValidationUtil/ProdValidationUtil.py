@@ -1,6 +1,7 @@
 """
 The utility that accomplishes creation, population, and validation of services and service groups,
 """
+import os
 
 import Constants
 from Service import Service
@@ -112,6 +113,8 @@ def populatePropDictionary(serviceGroup):
 
 def createFilePath(serviceList):
     for service in serviceList:
+        bashCommand = "tree"
+        os.system(bashCommand)
         if service.environmentType == Constants.EnvironmentType.NA:
             pass  # TODO Might want to reorganize this but for now it works
         elif service.environmentType == Constants.ValidationEnvConstants.TRAIN:
