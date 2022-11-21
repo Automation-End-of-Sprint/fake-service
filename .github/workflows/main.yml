@@ -26,7 +26,6 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         path: ${{ env.SCRIPT_DIR }}
         ref: validation-scripts
-        working-directory: ${{ github.workspace }}
         
     - name: Collecting mgmt-master repository
       uses: actions/checkout@v2
@@ -35,7 +34,6 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         path: ${{ env.MASTER_DIR }}
         ref: master
-        working-directory: ${{ github.workspace }}
         
     - name: Collecting mgmt-develop repository
       uses: actions/checkout@v2
@@ -44,7 +42,6 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         path: ${{ env.DEVELOP_DIR }}
         ref: develop
-        working-directory: ${{ github.workspace }}
         
     - name: Validation Results
       run: python ${{ env.SCRIPT_DIR }}/ProdValidationUtil/main.py
