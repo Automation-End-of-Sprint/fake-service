@@ -12,12 +12,13 @@ jobs:
     name: Hello world
     runs-on: ubuntu-latest
     steps:
-    - name: Check-out devops repository
+    - name: Check-out prod validation script repository
       uses: actions/checkout@v2
       with:
         repository: Automation-End-of-Sprint/Prod-Property-Validation-Script
         token: ${{ secrets.GITHUB_TOKEN }}
         path: ${{ env.SCRIPT_DIR }}
+        ref: main
     - name: Check-out mgmt-master repository
       uses: actions/checkout@v2
       with:
