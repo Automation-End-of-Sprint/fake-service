@@ -57,14 +57,14 @@ def validateServiceGroup(serviceGroup):
     if step1ResultsVSProp:
         for errorProd in step1ResultsVSProp:
             serviceGroup.putErrorInList(
-                PropertyError(errorProd, service.serviceName + "Missing the following property that exist within UAT1 "
-                                         "but not prod "))
+                PropertyError("Service: " + service.serviceName + ": ", "Missing " + errorProd + " from prod but it exist within "
+                                                                 "UAT1"))
 
     if step2ResultsVSProp:
         for errorProdAP in step2ResultsVSProp:
             serviceGroup.putErrorInList(
-                PropertyError(errorProdAP, service.serviceName + "Missing the following property that exist within "
-                                                                 "UAT1 but not prod-ap "))
+                PropertyError("Service: " + service.serviceName + ": ", "Missing " + errorProdAP + " from prod-ap but it exist within "
+                                                                 "UAT1"))
 
     # PART 2: Validate TRN is updated with UAT1
     # 1) Exists within UAT1 and TRN ==> Output list
@@ -85,13 +85,12 @@ def validateServiceGroup(serviceGroup):
     if missingInMasterAndProd:
         for errorMasterProd in missingInMasterAndProd:
             serviceGroup.putErrorInList(
-                PropertyError(errorMasterProd, service.serviceName + "Missing the following property that exist "
+                PropertyError("Service: " + service.serviceName + ":", " Missing " + errorMasterProd + " from Master the following property that exist "
                                                                      "within Develop"))
     if missingInMasterAndProdAP:
         for errorMasterAP in missingInMasterAndProdAP:
             serviceGroup.putErrorInList(
-                PropertyError("Service: " + service.serviceName + ":", "Missing" + errorMasterAP + "the following "
-                                                                                                   "property that "
+                PropertyError("Service: " + service.serviceName + ":", "Missing" + errorMasterAP + " from Develop"
                                                                                  "exist within Master"))
 
 
