@@ -9,7 +9,7 @@ env:
 
 jobs:
   checkout-script:
-    name: Hello world
+    name: Property Validation PROD
     runs-on: ubuntu-latest
     steps:
     - name: Check-out prod validation script repository
@@ -35,6 +35,6 @@ jobs:
         path: ${{ env.DEVELOP_DIR }}
         ref: develop
 
-    - name: Hello World
+    - name: Output Current Working Directory Tree
       run: tree
       shell: sh
