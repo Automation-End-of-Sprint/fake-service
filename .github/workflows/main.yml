@@ -12,7 +12,7 @@ jobs:
     name: Property Validation PROD
     runs-on: ubuntu-latest
     steps:
-    - name: Check-out prod validation script repository
+    - name: Check-out validation script repository
       uses: actions/checkout@v2
       with:
         repository: Automation-End-of-Sprint/mgmt-config-fake
@@ -21,7 +21,7 @@ jobs:
         ref: validation-scripts
         working-directory: ${{ github.workspace }}
         
-    - name: Check-out mgmt-master repository
+    - name: Collecting mgmt-master repository
       uses: actions/checkout@v2
       with:
         repository: Automation-End-of-Sprint/mgmt-config-fake
@@ -30,7 +30,7 @@ jobs:
         ref: master
         working-directory: ${{ github.workspace }}
         
-    - name: Check-out mgmt-develop repository
+    - name: Collecting mgmt-develop repository
       uses: actions/checkout@v2
       with:
         repository: Automation-End-of-Sprint/mgmt-config-fake
@@ -38,12 +38,12 @@ jobs:
         path: ${{ env.DEVELOP_DIR }}
         ref: develop
         working-directory: ${{ github.workspace }}
-
-    - name: Output Current Working Directory Tree
+        
+    - name: Current Working Directory
       run: tree
-      shell: sh
+      shell: sh  
       
-    - name: Output Current Working Directory Tree
+    - name: Validation Results
       run: python ${{ env.SCRIPT_DIR }}/ProdValidationUtil/main.py
       shell: sh
      
