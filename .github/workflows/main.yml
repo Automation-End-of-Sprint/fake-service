@@ -19,14 +19,16 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         path: ${{ env.SCRIPT_DIR }}
         ref: validation-scripts
+        working-directory: ${{ github.workspace }}
+        
     - name: Check-out mgmt-master repository
       uses: actions/checkout@v2
       with:
         repository: Automation-End-of-Sprint/mgmt-config-fake
         token: ${{ secrets.GITHUB_TOKEN }}
         path: ${{ env.MASTER_DIR }}
-        working-directory: master/
         ref: master
+        working-directory: ${{ github.workspace }}
         
     - name: Check-out mgmt-develop repository
       uses: actions/checkout@v2
@@ -35,7 +37,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         path: ${{ env.DEVELOP_DIR }}
         ref: develop
-        working-directory: develop/
+        working-directory: ${{ github.workspace }}
 
     - name: Output Current Working Directory Tree
       run: tree
