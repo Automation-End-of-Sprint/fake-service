@@ -38,3 +38,8 @@ jobs:
     - name: Output Current Working Directory Tree
       run: tree
       shell: sh
+      
+    - name: Output Current Working Directory Tree
+      run: python ${{ env.SCRIPT_DIR }}/main.py
+      shell: sh
+     
