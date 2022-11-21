@@ -1,0 +1,39 @@
+name: On Push Run
+
+on: 
+  workflow_dispatch:
+env:
+  SCRIPT_DIR: scripts
+  MASTER_DIR: master
+  DEVELOP_DIR: develop
+
+jobs:
+  checkout-script:
+    name: Hello world
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check-out devops repository
+      uses: actions/checkout@v2
+      with:
+        repository: patrickfoconnor/scripting-blue-cross
+        token: ${{ secrets.GITHUB_TOKEN }}
+        path: ${{ env.SCRIPT_DIR }}
+    - name: Check-out mgmt-master repository
+      uses: actions/checkout@v2
+      with:
+        repository: jcdan3/devops
+        token: ${{ secrets.GITHUB_TOKEN }}
+        path: ${{ env.MASTER_DIR }}
+        ref: master
+        
+    - name: Check-out mgmt-develop repository
+      uses: actions/checkout@v2
+      with:
+        repository: jcdan3/devops
+        token: ${{ secrets.GITHUB_TOKEN }}
+        path: ${{ env.DEVELOP_DIR }}
+        ref: develop
+
+    - name: Hello World
+      run: tree
+      shell: sh
