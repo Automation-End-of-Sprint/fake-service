@@ -15,10 +15,10 @@ jobs:
     - name: Check-out prod validation script repository
       uses: actions/checkout@v2
       with:
-        repository: Automation-End-of-Sprint/Prod-Property-Validation-Script
+        repository: Automation-End-of-Sprint/mgmt-config-fake
         token: ${{ secrets.GITHUB_TOKEN }}
         path: ${{ env.SCRIPT_DIR }}
-        ref: main
+        ref: validation-scripts
     - name: Check-out mgmt-master repository
       uses: actions/checkout@v2
       with:
